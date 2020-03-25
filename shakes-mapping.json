@@ -1,0 +1,20 @@
+{
+	"mappings": {
+		"properties": {
+			"speaker": {
+				"type": "text",
+				"index": false
+			},
+			"play_name": {
+				"type": "text",
+				"index": false
+			},
+			"line_id": {
+				"type": "integer"
+			},
+			"speech_number": {
+				"type": "integer"
+			}
+		}
+	}
+}

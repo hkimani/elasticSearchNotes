@@ -1,0 +1,10 @@
+{
+    "movie": {
+        "properties": {
+            "title": {
+                "type": "text",
+                "analyzer": "autocomplete"
+            }
+        }
+    }
+}

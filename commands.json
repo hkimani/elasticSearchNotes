@@ -1,0 +1,44 @@
+{
+    "commands": {
+        "create": ["curl -XPUT 127.0.0.1:9200/shakespeare -H 'Content-Type: application/json' --data-binary @shakes-mapping.json", "curl -X PUT 'localhost:9200/movies?pretty' -H 'Content-Type: application/json' -d @movies-mapping.json"],
+        "delete": "curl -X DELETE 'localhost:9200/shakespeare?pretty'",
+        "bulk": "curl -X POST 'localhost:9200/shakespeare/_bulk?pretty' -H 'Content-Type: application/json' --data-binary @new.json",
+        "search": {
+            "command": "curl -X POST 'localhost:9200/shakespeare/_search?pretty' -H 'Content-Type: application/json' -d",
+            "query_append": {
+                "query": {
+                    "match_phrase": {
+                        "text_entry": "to be or not to be"
+                    }
+                }
+            },
+            "comments": "Remember to surround the appended query with quotes"
+        },
+        "analyzer": {
+            "command": "curl -X POST 'localhost:9200/movies/_analyze?pretty' -H 'Content-Type: application/json' -d",
+            "query_append": {
+                "value": {
+                    "analyzer": "autocomplete",
+                    "text": "Sta"
+                },
+                "comments": "append value only excluding key"
+            },
+            "command2": "curl -X PUT 'localhost:9200/movies/_mapping/movie?pretty&include_type_name' -H 'Content-Type: application/json' -d @movies-mapping.json",
+            "query_append2": {
+                "comments": "Refer to movies-mapping.json"
+            },
+            "command3": "curl -X GET 'localhost:9200/movies/movie/_search?pretty' -H 'Content-Type: application/json' -d",
+            "query_append3": {
+                "query": {
+                    "match": {
+                       "title": {"query": "star", "analyzer": "standard"}
+                     }
+                 }
+                 
+            }
+        }
+    }
+}
+
+
+
